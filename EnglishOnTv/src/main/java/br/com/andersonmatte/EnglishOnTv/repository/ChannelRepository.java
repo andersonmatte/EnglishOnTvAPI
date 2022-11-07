@@ -21,6 +21,10 @@ public class ChannelRepository {
     private ArrayList<Channel> channelsWithStreams = new ArrayList<>();
 
     public List<Channel> getChannels() {
+        //Clear lists
+        channels = new ArrayList<>();
+        streams = new ArrayList<>();
+        channelsWithStreams = new ArrayList<>();
         // API FAKE busca no sonplaceholder os usuários
         final String uri = "https://iptv-org.github.io/api/channels.json";
         RestTemplate restTemplate = new RestTemplate();
@@ -30,22 +34,11 @@ public class ChannelRepository {
             objectMapper.configure(JsonParser.Feature.AUTO_CLOSE_SOURCE, true);
             // Aqui é criada a lista de objeto Pessoa que vai ser parseado
             List<Channel> channelList = Arrays.asList(objectMapper.readValue(result, Channel[].class));
-            this.channels = (ArrayList<Channel>) channelList.stream()
-                    .filter(c -> c.getCountry().equals("AU") || c.getCountry().equals("CA") ||
-                            c.getCountry().equals("IE") || c.getCountry().equals("JM") ||
-                            c.getCountry().equals("NZ") || c.getCountry().equals("ZA") ||
-                            c.getCountry().equals("UK") || c.getCountry().equals("US"))
-                    .collect(Collectors.toList());
             if (!channelList.isEmpty()) {
-//                for (Channel c : channelList) {
-//                    Channel channel = new Channel(c.getId(), c.getName(), c.getCountry(), c.getLogo(), c.getStream());
-//                    for (Stream stream1 : this.streams) {
-//                        if (channel.getId().equals(stream1.getChannel())) {
-//                            channel.setStream(stream1);
-//                        }
-//                        channels.add(channel);
-//                    }
-//                }
+                for (Channel c : channelList) {
+                    Channel channel = new Channel(c.getId(), c.getName(), c.getCountry(), c.getLogo(), c.getStream());
+                    channels.add(channel);
+                }
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
