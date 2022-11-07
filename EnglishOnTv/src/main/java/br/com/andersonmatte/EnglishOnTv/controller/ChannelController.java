@@ -28,12 +28,12 @@ public class ChannelController {
         return channelRepository.getStreams();
     }
 
-    @GetMapping(path="/cannelswithstreams", produces = "application/json")
+    @GetMapping(path="/channelswithstreams", produces = "application/json")
     public List<Channel> getChannelsWithStreams() {
         return channelRepository.getChannelsWithStreams();
     }
 
-    @GetMapping(path="/cannelscountry", produces = "application/json")
+    @GetMapping(path="/channelscountry", produces = "application/json")
     public List<Channel> getChannelsCountry(@RequestParam("country") String country) {
         return channelRepository.getChannelsCountry(country);
     }
