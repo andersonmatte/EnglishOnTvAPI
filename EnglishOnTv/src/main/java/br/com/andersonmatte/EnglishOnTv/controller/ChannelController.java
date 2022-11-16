@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://ec2-18-118-49-145.us-east-2.compute.amazonaws.com:8080", maxAge = 3600)
 @RestController
 @RequestMapping(path = "/api")
 public class ChannelController {
