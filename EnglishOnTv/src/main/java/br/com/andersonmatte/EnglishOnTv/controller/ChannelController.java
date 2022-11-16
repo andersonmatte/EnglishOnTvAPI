@@ -4,13 +4,11 @@ import br.com.andersonmatte.EnglishOnTv.Entity.Channel;
 import br.com.andersonmatte.EnglishOnTv.Entity.Stream;
 import br.com.andersonmatte.EnglishOnTv.repository.ChannelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://ec2-18-118-49-145.us-east-2.compute.amazonaws.com:8080", maxAge = 3600)
 @RestController
 @RequestMapping(path = "/api")
 public class ChannelController {
